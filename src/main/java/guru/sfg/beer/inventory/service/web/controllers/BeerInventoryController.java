@@ -13,24 +13,21 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-/**
- * Created by jt on 2019-05-31.
- */
+/** Created by jt on 2019-05-31. */
 @Slf4j
 @RequiredArgsConstructor
 @RestController
 public class BeerInventoryController {
 
-    private final BeerInventoryRepository beerInventoryRepository;
-    private final BeerInventoryMapper beerInventoryMapper;
+  private final BeerInventoryRepository beerInventoryRepository;
+  private final BeerInventoryMapper beerInventoryMapper;
 
-    @GetMapping("api/v1/beer/{beerId}/inventory")
-    List<BeerInventoryDto> listBeersById(@PathVariable UUID beerId){
-        log.debug("Finding Inventory for beerId:" + beerId);
+  @GetMapping("api/v1/beer/{beerId}/inventory")
+  List<BeerInventoryDto> listBeersById(@PathVariable UUID beerId) {
+    log.debug("Finding Inventory for beerId:" + beerId);
 
-        return beerInventoryRepository.findAllByBeerId(beerId)
-                .stream()
-                .map(beerInventoryMapper::beerInventoryToBeerInventoryDto)
-                .collect(Collectors.toList());
-    }
+    return beerInventoryRepository.findAllByBeerId(beerId).stream()
+        .map(beerInventoryMapper::beerInventoryToBeerInventoryDto)
+        .collect(Collectors.toList());
+  }
 }
