@@ -1,9 +1,9 @@
-package guru.sfg.beer.inventory.service.services;
+package guru.springframework.beerinventoryservice.services;
 
-import guru.sfg.beer.inventory.service.domain.BeerInventory;
-import guru.sfg.beer.inventory.service.repositories.BeerInventoryRepository;
-import guru.sfg.beer.inventory.service.web.mappers.BeerInventoryMapper;
-import guru.sfg.beer.inventory.service.web.model.BeerInventoryDto;
+import guru.springframework.beerinventoryservice.brewery.model.BeerInventoryDto;
+import guru.springframework.beerinventoryservice.domain.BeerInventory;
+import guru.springframework.beerinventoryservice.repositories.BeerInventoryRepository;
+import guru.springframework.beerinventoryservice.web.mappers.BeerInventoryMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

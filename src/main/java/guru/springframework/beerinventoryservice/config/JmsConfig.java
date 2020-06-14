@@ -1,4 +1,4 @@
-package guru.sfg.beer.inventory.service.config;
+package guru.springframework.beerinventoryservice.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

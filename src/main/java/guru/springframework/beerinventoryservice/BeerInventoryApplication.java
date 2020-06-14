@@ -1,4 +1,4 @@
-package guru.sfg.beer.inventory.service;
+package guru.springframework.beerinventoryservice;
 
 import org.apache.activemq.artemis.core.config.impl.ConfigurationImpl;
 import org.apache.activemq.artemis.core.server.ActiveMQServer;
