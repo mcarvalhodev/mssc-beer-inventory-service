@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import static java.util.Objects.requireNonNullElse;
+
 @Slf4j
 @RequiredArgsConstructor
 @Service
@@ -29,21 +31,17 @@ public class AllocationServiceImpl implements AllocationService {
         .getBeerOrderLines()
         .forEach(
             beerOrderLine -> {
-              if ((((beerOrderLine.getOrderQuantity() != null
-                          ? beerOrderLine.getOrderQuantity()
-                          : 0)
-                      - (beerOrderLine.getQuantityAllocated() != null
-                          ? beerOrderLine.getQuantityAllocated()
-                          : 0))
-                  > 0)) {
+              final int i = requireNonNullElse(beerOrderLine.getOrderQuantity(), 0);
+              final int j = requireNonNullElse(beerOrderLine.getQuantityAllocated(), 0);
+
+              if ((i - j > 0)) {
                 allocateBeerOrderLine(beerOrderLine);
               }
+
               totalOrdered.set(totalOrdered.get() + beerOrderLine.getOrderQuantity());
-              totalAllocated.set(
-                  totalAllocated.get()
-                      + (beerOrderLine.getQuantityAllocated() != null
-                          ? beerOrderLine.getQuantityAllocated()
-                          : 0));
+
+              int i1 = requireNonNullElse(beerOrderLine.getQuantityAllocated(), 0);
+              totalAllocated.set(totalAllocated.get() + i1);
             });
 
     log.debug("Total Ordered: " + totalOrdered.get() + " Total Allocated: " + totalAllocated.get());
@@ -57,14 +55,10 @@ public class AllocationServiceImpl implements AllocationService {
 
     beerInventoryList.forEach(
         beerInventory -> {
-          int inventory =
-              (beerInventory.getQuantityOnHand() == null) ? 0 : beerInventory.getQuantityOnHand();
-          int orderQty =
-              (beerOrderLine.getOrderQuantity() == null) ? 0 : beerOrderLine.getOrderQuantity();
-          int allocatedQty =
-              (beerOrderLine.getQuantityAllocated() == null)
-                  ? 0
-                  : beerOrderLine.getQuantityAllocated();
+          int inventory = requireNonNullElse(beerInventory.getQuantityOnHand(), 0);
+          int orderQty = requireNonNullElse(beerOrderLine.getOrderQuantity(), 0);
+          int allocatedQty = requireNonNullElse(beerOrderLine.getQuantityAllocated(), 0);
+
           int qtyToAllocate = orderQty - allocatedQty;
 
           if (inventory >= qtyToAllocate) { // full allocation
