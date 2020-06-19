@@ -9,6 +9,9 @@ import org.springframework.jms.support.converter.MessageType;
 @Configuration
 public class JmsConfig {
 
+  public static final String ALLOCATE_ORDER_QUEUE = "allocate-order";
+  public static final String ALLOCATE_ORDER_RESPONSE = "allocate-order-response";
+
   @Bean
   public MessageConverter messageConverter() {
     MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
