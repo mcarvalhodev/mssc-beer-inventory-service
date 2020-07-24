@@ -35,6 +35,8 @@ public class OrderAllocationListener implements MessageListener<AllocateOrderReq
       } else {
         builder.pendingInventory(true);
       }
+
+      builder.allocationError(false);
     } catch (Exception e) {
       log.error("Allocation failed for Order[id=" + order.getId() + "]");
       builder.allocationError(true);
