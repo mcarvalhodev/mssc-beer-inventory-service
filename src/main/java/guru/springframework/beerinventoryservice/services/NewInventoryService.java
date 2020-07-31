@@ -27,12 +27,12 @@ public class NewInventoryService {
   @PostMapping
   public ResponseEntity<?> save(@RequestBody BeerInventoryDto dto) throws URISyntaxException {
     BeerInventory beerInventory =
-            repository.save(
-                    BeerInventory.builder()
-                            .beerId(dto.getId())
-                            .upc(dto.getUpc())
-                            .quantityOnHand(dto.getQuantityOnHand())
-                            .build());
+        repository.save(
+            BeerInventory.builder()
+                .beerId(dto.getId())
+                .upc(dto.getUpc())
+                .quantityOnHand(dto.getQuantityOnHand())
+                .build());
 
     BeerInventoryDto beerInventoryDto = mapper.beerInventoryToBeerInventoryDto(beerInventory);
 

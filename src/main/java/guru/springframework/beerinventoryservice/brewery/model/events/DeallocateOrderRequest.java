@@ -12,5 +12,5 @@ import lombok.NoArgsConstructor;
 @Builder
 public class DeallocateOrderRequest {
 
-    private BeerOrderDto order;
+  private BeerOrderDto order;
 }

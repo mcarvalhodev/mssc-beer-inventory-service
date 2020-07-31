@@ -27,9 +27,7 @@ import javax.persistence.Entity;
 import java.sql.Timestamp;
 import java.util.UUID;
 
-/**
- * Created by jt on 2019-01-26.
- */
+/** Created by jt on 2019-01-26. */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -45,9 +43,9 @@ public class BeerInventory extends BaseEntity {
 
   @Builder
   public BeerInventory(
-          UUID id,
-          Long version,
-          Timestamp createdDate,
+      UUID id,
+      Long version,
+      Timestamp createdDate,
       Timestamp lastModifiedDate,
       UUID beerId,
       String upc,
